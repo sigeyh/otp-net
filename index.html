@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OTP Verification</title>
+  
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#3f4bef">
+  
+  <!-- iOS PWA Support -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="OTP App">
+  <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="icons/icon-72x72.png">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Enter Mobile Number</h2>
+    <input type="tel" id="mobile" placeholder="Enter mobile number" required>
+    <button onclick="sendOTP()">Send OTP</button>
+    
+    <div id="otpSection" style="display:none;">
+      <h2>Enter OTP</h2>
+      <input type="text" id="otp" placeholder="Enter OTP" required>
+      <button onclick="verifyOTP()">Verify OTP</button>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(reg => console.log("Service Worker Registered", reg))
+        .catch(err => console.log("Service Worker Registration Failed", err));
+    }
+  </script>
+</body>
+</html>
